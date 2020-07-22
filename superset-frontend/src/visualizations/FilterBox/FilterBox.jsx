@@ -178,7 +178,7 @@ class FilterBox extends React.Component {
               }}
               onOpenDateFilterControl={this.onOpenDateFilterControl}
               onCloseDateFilterControl={this.onFilterMenuClose}
-              value={this.state.selectedValues[TIME_RANGE] || 'No filter'}
+              value={this.state.selectedValues[TIME_RANGE] || t('No filter')}
             />
           </div>
         </div>
@@ -256,7 +256,8 @@ class FilterBox extends React.Component {
     const data = this.props.filtersChoices[key];
     const max = Math.max(...data.map(d => d.metric));
     let value = selectedValues[key] || null;
-
+    const tags = [];
+    let options = [];
     // Assign default value if required
     if (!value && filterConfig.defaultValue) {
       if (filterConfig.multiple) {
@@ -264,6 +265,48 @@ class FilterBox extends React.Component {
         value = filterConfig.defaultValue.split(';');
       } else {
         value = filterConfig.defaultValue;
+      }
+    }
+    for (let i = 0; i < data.length; i++) {
+      const perc = Math.round((data[i].metric / max) * 100);
+      const backgroundImage =
+          'linear-gradient(to right, lightgrey, ' +
+          `lightgrey ${perc}%, rgba(0,0,0,0) ${perc}%`;
+      const style = {
+        backgroundImage,
+        padding: '2px 5px',
+      };
+      if (key === 'customertags' && data[i].id) {
+        let tagStr = data[i].id.replace('[', '');
+        tagStr = tagStr.replace(']', '');
+        tagStr = tagStr.trim();
+        let tagArr = tagStr.split(',');
+        tagArr = tagArr.sort();
+        for (let j = 0; j < tagArr.length; j++) {
+          if (tags.indexOf(tagArr[j].trim()) === -1 && tagArr[j] !== '') {
+            tags.push(tagArr[j].trim());
+            options.push({
+              value: tagArr[j].trim(),
+              label: tagArr[j].trim(),
+              style,
+            });
+          }
+        }
+        // always sort options
+        options = options.sort((a, b) => {
+          let x = a.value;
+          let y = b.value;
+          if (typeof x === 'string') {
+            x = ('' + x).toLowerCase();
+          }
+          if (typeof y === 'string') {
+            y = ('' + y).toLowerCase();
+          }
+          // eslint-disable-next-line no-nested-ternary
+          return x < y ? -1 : x > y ? 1 : 0;
+        });
+      } else {
+        options.push({ value: data[i].id, label: data[i].id, style });
       }
     }
     return (

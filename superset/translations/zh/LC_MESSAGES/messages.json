@@ -56,7 +56,7 @@
         "表名"
       ],
       "Name of table to be created from csv data.": [
-        "从CSV数据创建的表的名称."
+        "从CSV数据将创建的表的名称."
       ],
       "CSV File": [
         "CSV文件"
@@ -65,7 +65,7 @@
         "选择一个CSV文件上传到数据库."
       ],
       "CSV Files Only!": [
-        "仅支持CSV文件！"
+        "仅CSV文件！"
       ],
       "Database": [
         "数据库"
@@ -94,7 +94,7 @@
       "Schema": [
         "模式"
       ],
-      "Specify a schema (if database flavour supports this).": [
+      "Specify a schema (if database flavor supports this).": [
         "指定一个Schema(需要数据库支持)"
       ],
       "Header Row": [
@@ -419,7 +419,7 @@
         "查询被终止。"
       ],
       "Failed at stopping query.": [
-        "停止查询失败。"
+        "无法终止查询。"
       ],
       "Error occurred while fetching table metadata": [
         "获取表格元数据时发生错误"
@@ -491,7 +491,7 @@
         "在 SQL 编辑器中打开"
       ],
       "view results": [
-        "查看结果"
+        "展示结果"
       ],
       "Data preview": [
         "数据预览"
@@ -794,10 +794,10 @@
         "%s%s"
       ],
       "Active Dashboard Filters": [
-        "活跃的看板过滤器"
+        "活跃的仪表板过滤器"
       ],
       "Checkout this dashboard: %s": [
-        "查看这个看板：%s"
+        "查看这个仪表板：%s"
       ],
       "Save as": [
         "另存为"
@@ -806,7 +806,7 @@
         "强制刷新"
       ],
       "Force refresh the whole dashboard": [
-        "强制刷新整个看板"
+        "强制刷新整个仪表板"
       ],
       "Set autorefresh": [
         "设置自动刷新"
@@ -815,31 +815,31 @@
         "设置此会话的自动刷新间隔"
       ],
       "Save the dashboard": [
-        "保存看板"
+        "保存仪表板"
       ],
       "Edit properties": [
         "编辑属性"
       ],
       "Edit the dashboards's properties": [
-        "编辑看板的属性"
+        "编辑仪表板的属性"
       ],
       "Email": [
         "邮箱"
       ],
       "Email a link to this dashboard": [
-        "将这个看板链接通过Email发送"
+        "将这个仪表板链接通过Email发送"
       ],
       "Add Charts": [
         "添加图表"
       ],
       "Add some charts to this dashboard": [
-        "在该看板中添加一些图表"
+        "在该仪表板中添加一些图表"
       ],
       "Edit CSS": [
         "编辑CSS"
       ],
       "Change the style of the dashboard using CSS code": [
-        "使用CSS代码更改看板的样式"
+        "使用CSS代码更改仪表板的样式"
       ],
       "Load a template": [
         "加载一个模板"
@@ -893,10 +893,10 @@
         "刷新间隔"
       ],
       "Choose the refresh frequency for this dashboard": [
-        "选择此看板的刷新频率"
+        "选择此仪表板的刷新频率"
       ],
       "This dashboard was saved successfully.": [
-        "该看板已成功保存。"
+        "该仪表板已成功保存。"
       ],
       "Sorry, there was an error saving this dashboard: ": [
         "抱歉，保存此信息中心时发生错误"
@@ -905,13 +905,13 @@
         "异常"
       ],
       "You must pick a name for the new dashboard": [
-        "您必须为新的看板选择一个名称"
+        "您必须为新的仪表板选择一个名称"
       ],
       "Save Dashboard": [
-        "保存看板"
+        "保存仪表板"
       ],
       "Overwrite Dashboard [%s]": [
-        "覆盖看板 [%s]"
+        "覆盖仪表板 [%s]"
       ],
       "Save as:": [
         "另存为："
@@ -920,10 +920,10 @@
         "[看板名称]"
       ],
       "Sorry, there was an error fetching charts to this dashboard: ": [
-        "抱歉，这个看板在获取图表时发生错误："
+        "抱歉，这个仪表板在获取图表时发生错误："
       ],
       "Sorry, there was an error adding charts to this dashboard: ": [
-        "抱歉，这个看板在添加图表时发生错误："
+        "抱歉，这个仪表板在添加图表时发生错误："
       ],
       "Name": [
         "名字"
@@ -938,10 +938,10 @@
         "已修改"
       ],
       "Add a new chart to the dashboard": [
-        "在看板中添加新图表"
+        "在仪表板中添加新图表"
       ],
       "Add Charts to Dashboard": [
-        "在看板中添加图表"
+        "在仪表板中添加图表"
       ],
       "Served from data cached %s . Click to force refresh.": [
         "数据缓存 %s 。点击强制刷新。"
@@ -971,7 +971,7 @@
         "探索图表"
       ],
       "Remove chart from dashboard": [
-        "从看板中删除图表"
+        "从仪表板中删除图表"
       ],
       "A reference to the [Time] configuration, taking granularity into account": [
         "参考 [时间] 配置，考虑粒度"
@@ -2489,10 +2489,10 @@
         "请输入图表名称"
       ],
       "Please select a dashboard": [
-        "请选择一个看板"
+        "请选择一个仪表板"
       ],
       "Please enter a dashboard name": [
-        "请输入看板名称"
+        "请输入仪表板名称"
       ],
       "Save A Chart": [
         "图表保存"
@@ -2504,16 +2504,16 @@
         "[图表名称]"
       ],
       "Do not add to a dashboard": [
-        "不要添加到看板"
+        "不要添加到仪表板"
       ],
       "Add chart to existing dashboard": [
-        "将图表添加到现有看板"
+        "将图表添加到现有仪表盘"
       ],
       "Add to new dashboard": [
-        "添加到新的看板"
+        "添加到新的仪表板"
       ],
       "Save & go to dashboard": [
-        "保存并转到看板"
+        "保存并转到仪表板"
       ],
       "choose a column or metric": [
         "选择列或计量指标"
@@ -2956,7 +2956,7 @@
       "Table [{}] could not be found, please double check your database connection, schema, and table name": [
         "找不到 [{}] 表，请仔细检查您的数据库连接、Schema 和 表名"
       ],
-      "The table was created. As part of this two phase configuration process, you should now click the edit button by the new table to configure it.": [
+      "The table was created. As part of this two-phase configuration process, you should now click the edit button by the new table to configure it.": [
         "表被创建。作为这两个阶段配置过程的一部分，您现在应该单击新表的编辑按钮来配置它。"
       ],
       "Refresh Metadata": [
@@ -2987,7 +2987,7 @@
         "没有找到任何记录"
       ],
       "Import dashboards": [
-        "看板导入"
+        "仪表盘导入"
       ],
       "No Access!": [
         "不能访问!"
@@ -3029,7 +3029,7 @@
         "确定删除全部？"
       ],
       "This endpoint requires the `all_datasource_access` permission": [
-        "这个端点需要“all_datasource_access”的权限"
+        "此端点需要“all_datasource_access”权限"
       ],
       "The datasource seems to have been deleted": [
         "数据源已经被删除"
@@ -3048,9 +3048,6 @@
       ],
       "This view requires the database %(name)s or `all_datasource_access` permission": [
         "此视图需要数据库 %(name)s或“all_datasource_access”权限"
-      ],
-      "This endpoint requires the datasource %(name)s, database or `all_datasource_access` permission": [
-        "此端点需要数据源 %(name)s、数据库或“all_datasource_access”权限"
       ],
       "List Databases": [
         "数据库列表"
@@ -3119,7 +3116,7 @@
         "模拟登录用户"
       ],
       "Import Dashboards": [
-        "导入看板"
+        "导入仪表盘"
       ],
       "CSV to Database configuration": [
         "csv 到数据库配置"
@@ -3179,21 +3176,21 @@
         "图表"
       ],
       "List Dashboards": [
-        "看板列表"
+        "仪表盘列表"
       ],
       "Show Dashboard": [
-        "显示看板"
+        "显示仪表盘"
       ],
       "Add Dashboard": [
-        "添加看板"
+        "添加仪表盘"
       ],
       "Edit Dashboard": [
-        "编辑看板"
+        "编辑仪表盘"
       ],
       "This json object describes the positioning of the widgets in the dashboard. It is dynamically generated when adjusting the widgets size and positions by using drag & drop in the dashboard view": [
         "这个JSON对象描述了部件在看板中的位置。它是动态生成的，可以通过拖放，在看板中调整整部件的大小和位置"
       ],
-      "The css for individual dashboards can be altered here, or in the dashboard view where changes are immediately visible": [
+      "The CSS for individual dashboards can be altered here, or in the dashboard view where changes are immediately visible": [
         "可以在这里或者在看板视图修改单个看板的CSS样式"
       ],
       "To get a readable URL for your dashboard": [
@@ -3224,7 +3221,7 @@
         "导出"
       ],
       "Export dashboards?": [
-        "导出看板?"
+        "导出仪表盘?"
       ],
       "Action": [
         "操作"
@@ -3323,13 +3320,292 @@
         "编辑保存的查询"
       ],
       "Pop Tab Link": [
-        "弹出标签链接"
+        "流行标签链接"
       ],
       "Changed on": [
         "改变为"
       ],
       "Saved Queries": [
         "已保存查询"
+      ],
+      "Chart Cache Timeout": [
+        "表缓存超时"
+      ],
+      "Duration (in seconds) of the caching timeout for charts of this database. A timeout of 0 indicates that the cache never expires. Note this defaults to the global timeout if undefined.": [
+        "此数据库图表的缓存超时持续时间(以秒为单位)。超时为0表示缓存永远不会过期。注意，如果未定义，这默认为全局超时。"
+      ],
+      "Allow Csv Upload": [
+        "允许Csv上传"
+      ],
+      "If selected, please set the schemas allowed for csv upload in Extra.": [
+        "如果选择，请额外设置csv上传允许的模式。"
+      ],
+      "Asynchronous Query Execution": [
+        "异步执行查询"
+      ],
+      "Operate the database in asynchronous mode, meaning  that the queries are executed on remote workers as opposed to on the web server itself. This assumes that you have a Celery worker setup as well as a results backend. Refer to the installation docs for more information.": [
+        "以异步模式操作数据库，这意味着查询是在远程工作人员上执行的，而不是在web服务器本身上执行的, 这假设您有一个Celery worker setup以及一个结果后端。有关更多信息，请参考安装文档。"
+      ],
+      "Import a table definition": [
+        "导入一个已定义的表"
+      ],
+      "Duration (in seconds) of the caching timeout for this table. A timeout of 0 indicates that the cache never expires. Note this defaults to the database timeout if undefined.": [
+        "此表的缓存超时持续时间(以秒为单位)。超时为0表示缓存永远不会过期。注意，如果未定义，这默认为数据库的超时。"
+      ],
+      "Duration (in seconds) of the caching timeout for this chart. Note this defaults to the datasource/table timeout if undefined.": [
+        "此图表的缓存超时持续时间(以秒为单位)。注意，如果未定义，这默认为数据源/表超时。"
+      ],
+      "Duration (in seconds) of the caching timeout for this cluster. A timeout of 0 indicates that the cache never expires. Note this defaults to the global timeout if undefined.": [
+        "此集群的缓存超时持续时间(以秒为单位)。超时为0表示缓存永远不会过期。注意，如果未定义，这默认为全局超时。"
+      ],
+      "Duration (in seconds) of the caching timeout for this datasource. A timeout of 0 indicates that the cache never expires. Note this defaults to the cluster timeout if undefined.": [
+        "此数据源的缓存超时持续时间(以秒为单位)。超时为0表示缓存永远不会过期。注意，如果未定义，这默认为集群超时。"
+      ],
+      "Layer Configuration": [
+        "配置Layer"
+      ],
+      "Configure the basics of your Annotation Layer.": [
+        "注释层基本配置"
+      ],
+      "Mandatory": [
+        "必填参数"
+      ],
+      "Hide Layer": [
+        "隐藏Layer"
+      ],
+      "Annotation Layer Type": [
+        "注释层类型"
+      ],
+      "Choose the Annotation Layer Type": [
+        "选择注释层类型"
+      ],
+      "Display configuration": [
+        "显示配置"
+      ],
+      "Style": [
+        "风格"
+      ],
+      "Configure your how you overlay is displayed here.": [
+        "配置如何在这里显示您的覆盖。"
+      ],
+      "Line Width": [
+        "线宽"
+      ],
+      "Please choose at least one \"Group by\" field": [
+        "请至少选择一个“分组”字段"
+      ],
+      "'Group By' and 'Columns' can't overlap": [
+        "“分组”和“列”不能重叠"
+      ],
+      "Must have one numeric column specified": [
+        "必须指定一个数字列"
+      ],
+      "Could not connect to server": [
+        "无法连接服务器"
+      ],
+      "%s is not right as a column name, please alias it (as in SELECT count(*))": [
+        "%s 不适合作为列名，请对其进行别名（如 SELECT count(*)）"
+      ],
+      "Click the": [
+        "点击"
+      ],
+      "button on the top right to save your changes.": [
+        "请点击右上角的按钮，以保存您的更改。"
+      ],
+      "Served from data cached %s, click to force refresh.": [
+        "来自数据缓存 %s，点击强制刷新。"
+      ],
+      "Click to force refresh": [
+        "点击强制刷新"
+      ],
+      "Sorry, there was an error adding slices to this dashboard: %s": [
+        "对不起，在此仪表板中添加切片时出错：%s"
+      ],
+      "Edit this dashboard's properties": [
+        "编辑这个仪表板的属性"
+      ],
+      "Add Slices": [
+        "添加切片"
+      ],
+      "Add a new slice to the dashboard": [
+        "向仪表板添加新的切片"
+      ],
+      "Add Slices to Dashboard": [
+        "将切片添加到仪表板"
+      ],
+      "Edit slice properties": [
+        "编辑切片属性"
+      ],
+      "Please enter a slice name": [
+        "请输入切片名称"
+      ],
+      "Save A Slice": [
+        "保存一个切片"
+      ],
+      "Overwrite slice %s": [
+        "覆盖切片 %s"
+      ],
+      "[slice name]": [
+        "[切片名称]"
+      ],
+      "Add slice to existing dashboard": [
+        "将切片添加到现有仪表板"
+      ],
+      "Check out this slice: %s": [
+        "查看切片：%s"
+      ],
+      "Select %s": [
+        "选择 %s"
+      ],
+      "Perhaps your data has grown, your database is under unusual load, or you are simply querying a data source that is to large to be processed within the timeout range. If that is the case, we recommend that you summarize your data further.": [
+        "也许你的数据增长了，你的数据库处于非正常的负载下，或者你只是查询一个大的数据源在超时范围内处理。如果是这种情况，我们建议您进一步探查您的数据特征。"
+      ],
+      "Annotation layers to overlay on the visualization": [
+        "注释图层重叠在可视化上"
+      ],
+      "Select a annotation layer": [
+        "选择一个注释图层"
+      ],
+      "Error while fetching annotation layers": [
+        "获取注释图层时出错"
+      ],
+      "Choose the metric": [
+        "选择一个指标"
+      ],
+      "X Scale Interval": [
+        "X 比例间隔"
+      ],
+      "Y Scale Interval": [
+        "Y 比例间隔"
+      ],
+      "Whether to show extra controls or not. Extra controls include things like making multiBar charts stacked or side by side.": [
+        "是否显示额外的控制。额外的控制包括，制作堆叠或并排的多条形图。"
+      ],
+      "The time column for the visualization. Note that you can define arbitrary expression that return a DATETIME column in the table or. Also note that the filter below is applied against this column or expression": [
+        "可视化的时间列。请注意，您可以定义在表中返回 DATETIME 列的任意表达式。另请注意，下面的过滤器应用于此列或表达式"
+      ],
+      "Limits the number of time series that get displayed": [
+        "限制显示的时间序列的数量"
+      ],
+      "Range Filter": [
+        "范围过滤"
+      ],
+      "The server could not be reached. You may want to verify your connection and try again.": [
+        "服务器不可达。您可能需要验证连接并重试。"
+      ],
+      "An unknown error occurred. (Status: %s )": [
+        "出现未知错误。（状态：%s）"
+      ],
+      "No slices": [
+        "没有切片"
+      ],
+      "Slices": [
+        "切片"
+      ],
+      "No favorite slices yet, go click on stars!": [
+        "暂无收藏的切片，去点击星星吧！"
+      ],
+      "Whether the access to this metric is restricted to certain roles. Only roles with the permission 'metric access on XXX (the name of this metric)' are allowed to access this metric.": [
+        "是否访问受限。只有有权限的用户才能访问。"
+      ],
+      "The list of slices associated with this table. By altering this datasource, you may change how these associated slices behave. Also note that slices need to point to a datasource, so this form will fail at saving if removing slices from a datasource. If you want to change the datasource for a slice, overwrite the slice from the 'explore view'": [
+        "与此表关联的切片列表。通过更改此数据源，您可以更改相关的切片。还要注意，切片需要指向数据源，因此如果从数据源中删除切片，则此形式将无法保存。如果要更改切片的数据源，请从`浏览视图`覆盖切片，"
+      ],
+      "Associated Slices": [
+        "相关切片"
+      ],
+      "Import": [
+        "导入"
+      ],
+      "Welcome!": [
+        "欢迎！"
+      ],
+      "All the queries in Sql Lab are going to be executed on behalf of currently authorized user.": [
+        "SQL Lab 中所有的查询都将被当前授权用户执行。"
+      ],
+      "Impersonate queries to the database": [
+        "模拟对数据库的查询"
+      ],
+      "List Slices": [
+        "切片列表"
+      ],
+      "Show Slice": [
+        "显示切片"
+      ],
+      "Add Slice": [
+        "添加切片"
+      ],
+      "Edit Slice": [
+        "编辑切片"
+      ],
+      "Duration (in seconds) of the caching timeout for this slice.": [
+        "切片数据过期时间（秒）"
+      ],
+      "Slice": [
+        "切片"
+      ],
+      "This json object describes the positioning of the widgets in the dashboard. It is dynamically generated when adjusting the widgets size and positions by using drag & drop in the dashboard view.": [
+        "这个 JSON 对象描述了部件在看板中的位置。它是动态生成的，可以通过拖放，在看板中调整整部件的大小和位置。"
+      ],
+      "Slice %(id)s not found": [
+        "切片 %(id)s 没有找到"
+      ],
+      "Cannot find User %(name)s, please ask your admin to create one.": [
+        "找不到用户 %(name)s，请您让管理员创建一个。"
+      ],
+      "Time Range": [
+        "创建日期"
+      ],
+      "No filter": [
+        "未过滤"
+      ],
+      "Last": [
+        "前"
+      ],
+      "Next": [
+        "后"
+      ],
+      "defaults": [
+        "快速设置"
+      ],
+      "custom": [
+        "详细设置"
+      ],
+      "Relative to today": [
+        "相对今天"
+      ],
+      "seconds": [
+        "秒"
+      ],
+      "minutes": [
+        "分"
+      ],
+      "hours": [
+        "小时"
+      ],
+      "days": [
+        "天"
+      ],
+      "weeks": [
+        "周"
+      ],
+      "months": [
+        "月"
+      ],
+      "years": [
+        "年"
+      ],
+      "Defaults": [
+        "快速过滤"
+      ],
+      "Custom": [
+        "自定义"
+      ],
+      "Start / end": [
+        "开始/结束时间"
+      ],
+      "Ok": [
+        "应用"
       ]
     }
   }

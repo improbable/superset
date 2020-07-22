@@ -183,7 +183,42 @@ export function getExploreUrlAndPayload({
   }
   uri = uri.search(search).directory(directory);
   const payload = { ...formData };
-
+  payload.extra_filters = [];
+  if (extra_filters) {
+    // eslint-disable-next-line array-callback-return
+    for (let i = 0; i < extra_filters.length; i++) {
+      const filter = extra_filters[i];
+      const actual_adhoc_filters = [];
+      if (filter.col === 'customertags') {
+        let wherestr = '';
+        // eslint-disable-next-line array-callback-return
+        filter.val.map(customertag => {
+          if (wherestr === '') {
+            wherestr += `contains(${filter.col}, '${customertag}') `;
+          } else {
+            wherestr += `OR contains(${filter.col}, '${customertag}') `;
+          }
+        });
+        // eslint-disable-next-line array-callback-return
+        payload.adhoc_filters.map(ad_filter => {
+          if (ad_filter.subject !== filter.col) {
+            actual_adhoc_filters.push(ad_filter);
+          }
+        });
+        actual_adhoc_filters.push({
+          clause: 'WHERE',
+          comparator: '',
+          operator: '',
+          expressionType: 'SQL',
+          subject: `${filter.col}`,
+          sqlExpression: wherestr,
+        });
+        payload.adhoc_filters = actual_adhoc_filters;
+      } else {
+        payload.extra_filters.push(filter);
+      }
+    }
+  }
   return {
     url: uri.toString(),
     payload,
