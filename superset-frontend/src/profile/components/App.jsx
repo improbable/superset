@@ -17,6 +17,7 @@
  * under the License.
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Col, Row, Tabs, Tab, Panel } from 'react-bootstrap';
 import { t } from '@superset-ui/translation';
 
@@ -25,18 +26,17 @@ import UserInfo from './UserInfo';
 import Security from './Security';
 import RecentActivity from './RecentActivity';
 import CreatedContent from './CreatedContent';
-import { UserWithPermissionsAndRoles } from '../../types/bootstrapTypes';
 
-interface AppProps {
-  user: UserWithPermissionsAndRoles;
-}
+const propTypes = {
+  user: PropTypes.object.isRequired,
+};
 
-export default function App({ user }: AppProps) {
+export default function App(props) {
   return (
     <div className="container app">
       <Row>
         <Col md={3}>
-          <UserInfo user={user} />
+          <UserInfo user={props.user} />
         </Col>
         <Col md={9}>
           <Tabs id="options">
@@ -50,7 +50,7 @@ export default function App({ user }: AppProps) {
             >
               <Panel>
                 <Panel.Body>
-                  <Favorites user={user} />
+                  <Favorites user={props.user} />
                 </Panel.Body>
               </Panel>
             </Tab>
@@ -64,7 +64,7 @@ export default function App({ user }: AppProps) {
             >
               <Panel>
                 <Panel.Body>
-                  <CreatedContent user={user} />
+                  <CreatedContent user={props.user} />
                 </Panel.Body>
               </Panel>
             </Tab>
@@ -78,7 +78,7 @@ export default function App({ user }: AppProps) {
             >
               <Panel>
                 <Panel.Body>
-                  <RecentActivity user={user} />
+                  <RecentActivity user={props.user} />
                 </Panel.Body>
               </Panel>
             </Tab>
@@ -92,7 +92,7 @@ export default function App({ user }: AppProps) {
             >
               <Panel>
                 <Panel.Body>
-                  <Security user={user} />
+                  <Security user={props.user} />
                 </Panel.Body>
               </Panel>
             </Tab>
@@ -102,3 +102,4 @@ export default function App({ user }: AppProps) {
     </div>
   );
 }
+App.propTypes = propTypes;

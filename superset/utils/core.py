@@ -1476,12 +1476,3 @@ class TemporalType(str, Enum):
     TEXT = "TEXT"
     TIME = "TIME"
     TIMESTAMP = "TIMESTAMP"
-
-
-class PostProcessingContributionOrientation(str, Enum):
-    """
-    Calculate cell contibution to row/column total
-    """
-
-    ROW = "row"
-    COLUMN = "column"

@@ -389,7 +389,6 @@ function mapStateToProps(state) {
   const form_data = getFormDataFromControls(explore.controls);
   const chartKey = Object.keys(charts)[0];
   const chart = charts[chartKey];
-
   return {
     isDatasourceMetaLoading: explore.isDatasourceMetaLoading,
     datasource: explore.datasource,

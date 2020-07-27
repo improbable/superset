@@ -19,6 +19,7 @@
 import { SupersetClient } from '@superset-ui/connection';
 import { t } from '@superset-ui/translation';
 import { getChartMetadataRegistry } from '@superset-ui/chart';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 import rison from 'rison';
@@ -107,7 +108,7 @@ class ChartList extends React.PureComponent<Props, State> {
     return isFeatureEnabled(FeatureFlag.LIST_VIEWS_SIP34_FILTER_UI);
   }
 
-  initialSort = [{ id: 'changed_on_delta_humanized', desc: true }];
+  initialSort = [{ id: 'changed_on', desc: true }];
 
   columns = [
     {
@@ -152,11 +153,11 @@ class ChartList extends React.PureComponent<Props, State> {
     {
       Cell: ({
         row: {
-          original: { changed_on_delta_humanized: changedOn },
+          original: { changed_on: changedOn },
         },
-      }: any) => <span className="no-wrap">{changedOn}</span>,
+      }: any) => <span className="no-wrap">{moment(changedOn).fromNow()}</span>,
       Header: t('Last Modified'),
-      accessor: 'changed_on_delta_humanized',
+      accessor: 'changed_on',
     },
     {
       accessor: 'description',

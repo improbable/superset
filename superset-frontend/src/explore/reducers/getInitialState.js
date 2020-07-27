@@ -41,6 +41,7 @@ export default function getInitialState(bootstrapData) {
     filterColumnOpts: [],
     isDatasourceMetaLoading: false,
     isStarred: false,
+    isInitializing: true,
   };
   const controls = getControlsState(bootstrappedState, rawFormData);
   bootstrappedState.controls = controls;
@@ -54,6 +55,7 @@ export default function getInitialState(bootstrapData) {
       bootstrappedState,
     );
   });
+  bootstrappedState.isInitializing = false;
 
   const sliceFormData = slice
     ? getFormDataFromControls(getControlsState(bootstrapData, slice.form_data))

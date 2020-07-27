@@ -41,9 +41,6 @@ const defaultProps = {
       name: 'main',
     },
   },
-  actions: {
-    setDatasource: sinon.spy(),
-  },
   onChange: sinon.spy(),
 };
 
@@ -74,15 +71,15 @@ describe('DatasourceControl', () => {
     let wrapper = setup();
     expect(wrapper.find('#datasource_menu')).toHaveLength(1);
     expect(wrapper.find('#datasource_menu').dive().find(MenuItem)).toHaveLength(
-      3,
+      2,
     );
 
     wrapper = setup({
-      isEditable: false,
+      onDatasourceSave: () => {},
     });
     expect(wrapper.find('#datasource_menu')).toHaveLength(1);
     expect(wrapper.find('#datasource_menu').dive().find(MenuItem)).toHaveLength(
-      2,
+      3,
     );
   });
 });

@@ -16,55 +16,63 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import React, { useState } from 'react';
-import DeleteModal from 'src/components/DeleteModal';
+import { t } from '@superset-ui/translation';
+import * as React from 'react';
+// @ts-ignore
+import { Button, Modal } from 'react-bootstrap';
 
 type Callback = (...args: any[]) => void;
-interface ConfirmStatusChangeProps {
-  title: React.ReactNode;
-  description: React.ReactNode;
+interface Props {
+  title: string | React.ReactNode;
+  description: string | React.ReactNode;
   onConfirm: Callback;
   children: (showConfirm: Callback) => React.ReactNode;
 }
 
-export default function ConfirmStatusChange({
-  title,
-  description,
-  onConfirm,
-  children,
-}: ConfirmStatusChangeProps) {
-  const [open, setOpen] = useState(false);
-  const [currentCallbackArgs, setCurrentCallbackArgs] = useState<any[]>([]);
+interface State {
+  callbackArgs: any[];
+  open: boolean;
+}
+export default class ConfirmStatusChange extends React.Component<Props, State> {
+  public state = {
+    callbackArgs: [],
+    open: false,
+  };
 
-  const showConfirm = (...callbackArgs: any[]) => {
+  public showConfirm = (...callbackArgs: any[]) => {
     // check if any args are DOM events, if so, call persist
     callbackArgs.forEach(
       arg => arg && typeof arg.persist === 'function' && arg.persist(),
     );
-    setOpen(true);
-    setCurrentCallbackArgs(callbackArgs);
+
+    this.setState({
+      callbackArgs,
+      open: true,
+    });
   };
 
-  const hide = () => {
-    setOpen(false);
-    setCurrentCallbackArgs([]);
+  public hide = () => this.setState({ open: false, callbackArgs: [] });
+
+  public confirm = () => {
+    this.props.onConfirm(...this.state.callbackArgs);
+    this.hide();
   };
 
-  const confirm = () => {
-    onConfirm(...currentCallbackArgs);
-    hide();
-  };
-
-  return (
-    <>
-      {children && children(showConfirm)}
-      <DeleteModal
-        description={description}
-        onConfirm={confirm}
-        onHide={hide}
-        open={open}
-        title={title}
-      />
-    </>
-  );
+  public render() {
+    return (
+      <>
+        {this.props.children && this.props.children(this.showConfirm)}
+        <Modal show={this.state.open} onHide={this.hide}>
+          <Modal.Header closeButton>{this.props.title}</Modal.Header>
+          <Modal.Body>{this.props.description}</Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.hide}>{t('Cancel')}</Button>
+            <Button bsStyle="danger" onClick={this.confirm}>
+              {t('OK')}
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
+    );
+  }
 }

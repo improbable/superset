@@ -17,30 +17,23 @@
  * under the License.
  */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Panel, Row, Col, Tabs, Tab, FormControl } from 'react-bootstrap';
 import { t } from '@superset-ui/translation';
-import { useQueryParam, StringParam, QueryParamConfig } from 'use-query-params';
-import { User } from 'src/types/bootstrapTypes';
+import { useQueryParam, StringParam } from 'use-query-params';
 import RecentActivity from '../profile/components/RecentActivity';
 import Favorites from '../profile/components/Favorites';
 import DashboardTable from './DashboardTable';
 
-interface WelcomeProps {
-  user: User;
-}
+const propTypes = {
+  user: PropTypes.object.isRequired,
+};
 
-function useSyncQueryState(
-  queryParam: string,
-  queryParamType: QueryParamConfig<
-    string | null | undefined,
-    string | undefined
-  >,
-  defaultState: string,
-): [string, (val: string) => void] {
+function useSyncQueryState(queryParam, queryParamType, defaultState) {
   const [queryState, setQueryState] = useQueryParam(queryParam, queryParamType);
   const [state, setState] = useState(queryState || defaultState);
 
-  const setQueryStateAndState = (val: string) => {
+  const setQueryStateAndState = val => {
     setQueryState(val);
     setState(val);
   };
@@ -48,7 +41,7 @@ function useSyncQueryState(
   return [state, setQueryStateAndState];
 }
 
-export default function Welcome({ user }: WelcomeProps) {
+export default function Welcome({ user }) {
   const [activeTab, setActiveTab] = useSyncQueryState(
     'activeTab',
     StringParam,
@@ -65,7 +58,6 @@ export default function Welcome({ user }: WelcomeProps) {
     <div className="container welcome">
       <Tabs
         activeKey={activeTab}
-        // @ts-ignore React bootstrap types aren't quite right here
         onSelect={setActiveTab}
         id="uncontrolled-tab-example"
       >
@@ -83,7 +75,6 @@ export default function Welcome({ user }: WelcomeProps) {
                     style={{ marginTop: '25px' }}
                     placeholder="Search"
                     value={searchQuery}
-                    // @ts-ignore React bootstrap types aren't quite right here
                     onChange={e => setSearchQuery(e.currentTarget.value)}
                   />
                 </Col>
@@ -123,3 +114,5 @@ export default function Welcome({ user }: WelcomeProps) {
     </div>
   );
 }
+
+Welcome.propTypes = propTypes;

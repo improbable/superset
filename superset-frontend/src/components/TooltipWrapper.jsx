@@ -26,10 +26,6 @@ const propTypes = {
   tooltip: PropTypes.node.isRequired,
   children: PropTypes.node.isRequired,
   placement: PropTypes.string,
-  trigger: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.arrayOf(PropTypes.string),
-  ]),
 };
 
 const defaultProps = {
@@ -41,13 +37,11 @@ export default function TooltipWrapper({
   tooltip,
   children,
   placement,
-  trigger,
 }) {
   return (
     <OverlayTrigger
       placement={placement}
       overlay={<Tooltip id={`${kebabCase(label)}-tooltip`}>{tooltip}</Tooltip>}
-      trigger={trigger}
     >
       {children}
     </OverlayTrigger>

@@ -72,16 +72,12 @@ describe('utils/common', () => {
     });
     it('changes formatting of temporal column', () => {
       const originalData = [
-        { __timestamp: null, column1: 'lorem' },
-        { __timestamp: 0, column1: 'ipsum' },
-        { __timestamp: 1594285437771, column1: 'dolor' },
-        { __timestamp: 1594285441675, column1: 'sit' },
+        { __timestamp: 1594285437771, column1: 'lorem' },
+        { __timestamp: 1594285441675, column1: 'ipsum' },
       ];
       const expectedData = [
-        { __timestamp: null, column1: 'lorem' },
-        { __timestamp: '1970-01-01 00:00:00', column1: 'ipsum' },
-        { __timestamp: '2020-07-09 09:03:57', column1: 'dolor' },
-        { __timestamp: '2020-07-09 09:04:01', column1: 'sit' },
+        { __timestamp: '2020-07-09 09:03:57', column1: 'lorem' },
+        { __timestamp: '2020-07-09 09:04:01', column1: 'ipsum' },
       ];
       expect(applyFormattingToTabularData(originalData)).toEqual(expectedData);
     });

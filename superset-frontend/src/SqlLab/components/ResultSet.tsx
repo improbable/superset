@@ -158,7 +158,6 @@ export default class ResultSet extends React.PureComponent<
               this.props.database &&
               this.props.database.allows_virtual_table_explore && (
                 <ExploreResultsButton
-                  // @ts-ignore Redux types are difficult to work with, ignoring for now
                   query={this.props.query}
                   database={this.props.database}
                   actions={this.props.actions}
@@ -247,7 +246,6 @@ export default class ResultSet extends React.PureComponent<
                 {t('Query in a new tab')}
               </Button>
               <ExploreCtasResultsButton
-                // @ts-ignore Redux types are difficult to work with, ignoring for now
                 table={tempTable}
                 schema={tempSchema}
                 dbId={exploreDBId}

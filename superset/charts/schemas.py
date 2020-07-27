@@ -14,15 +14,15 @@
 # KIND, either express or implied.  See the License for the
 # specific language governing permissions and limitations
 # under the License.
-from typing import Any, Dict
+from typing import Any, Dict, Union
 
 from flask_babel import gettext as _
-from marshmallow import fields, post_load, Schema, validate
+from marshmallow import fields, post_load, Schema, validate, ValidationError
 from marshmallow.validate import Length, Range
 
 from superset.common.query_context import QueryContext
-from superset.utils import schema as utils
-from superset.utils.core import FilterOperator
+from superset.exceptions import SupersetException
+from superset.utils import core as utils
 
 #
 # RISON/JSON schemas for query parameters
@@ -100,6 +100,13 @@ openapi_spec_methods_override = {
 }
 
 
+def validate_json(value: Union[bytes, bytearray, str]) -> None:
+    try:
+        utils.validate_json(value)
+    except SupersetException:
+        raise ValidationError("JSON not valid")
+
+
 class ChartPostSchema(Schema):
     """
     Schema to add a new chart.
@@ -116,7 +123,7 @@ class ChartPostSchema(Schema):
     )
     owners = fields.List(fields.Integer(description=owners_description))
     params = fields.String(
-        description=params_description, allow_none=True, validate=utils.validate_json
+        description=params_description, allow_none=True, validate=validate_json
     )
     cache_timeout = fields.Integer(
         description=cache_timeout_description, allow_none=True
@@ -388,19 +395,6 @@ class ChartDataSortOptionsSchema(ChartDataPostProcessingOperationOptionsSchema):
     aggregates = ChartDataAggregateConfigField()
 
 
-class ChartDataContributionOptionsSchema(ChartDataPostProcessingOperationOptionsSchema):
-    """
-    Contribution operation config.
-    """
-
-    orientation = fields.String(
-        description="Should cell values be calculated across the row or column.",
-        required=True,
-        validate=validate.OneOf(choices=("row", "column",)),
-        example="row",
-    )
-
-
 class ChartDataPivotOptionsSchema(ChartDataPostProcessingOperationOptionsSchema):
     """
     Pivot operation config.
@@ -506,7 +500,6 @@ class ChartDataPostProcessingOperationSchema(Schema):
         validate=validate.OneOf(
             choices=(
                 "aggregate",
-                "contribution",
                 "cum",
                 "geodetic_parse",
                 "geohash_decode",
@@ -544,8 +537,8 @@ class ChartDataFilterSchema(Schema):
     )
     op = fields.String(  # pylint: disable=invalid-name
         description="The comparison operator.",
-        validate=utils.OneOfCaseInsensitive(
-            choices=[filter_op.value for filter_op in FilterOperator]
+        validate=validate.OneOf(
+            choices=[filter_op.value for filter_op in utils.FilterOperator]
         ),
         required=True,
         example="IN",
@@ -644,7 +637,7 @@ class ChartDataQueryObjectSchema(Schema):
         "`ChartDataAdhocMetricSchema` for the structure of ad-hoc metrics.",
     )
     post_processing = fields.List(
-        fields.Nested(ChartDataPostProcessingOperationSchema, allow_none=True),
+        fields.Nested(ChartDataPostProcessingOperationSchema),
         description="Post processing operations to be applied to the result set. "
         "Operations are applied to the result set in sequential order.",
     )
@@ -680,7 +673,7 @@ class ChartDataQueryObjectSchema(Schema):
     timeseries_limit = fields.Integer(
         description="Maximum row count for timeseries queries. Default: `0`",
     )
-    timeseries_limit_metric = fields.Raw(
+    timeseries_limit_metric = fields.Integer(
         description="Metric used to limit timeseries queries by.", allow_none=True,
     )
     row_limit = fields.Integer(
@@ -721,7 +714,7 @@ class ChartDataQueryObjectSchema(Schema):
         fields.Dict(),
         description="HAVING filters to be added to legacy Druid datasource queries. "
         "This field is deprecated and should be passed to `extras` "
-        "as `having_druid`.",
+        "as `filters_druid`.",
         deprecated=True,
     )
 
@@ -819,7 +812,6 @@ CHART_DATA_SCHEMAS = (
     #  by Marshmallow<3, this is not currently possible.
     ChartDataAdhocMetricSchema,
     ChartDataAggregateOptionsSchema,
-    ChartDataContributionOptionsSchema,
     ChartDataPivotOptionsSchema,
     ChartDataRollingOptionsSchema,
     ChartDataSelectOptionsSchema,

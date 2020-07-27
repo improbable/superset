@@ -22,7 +22,6 @@ import { shallow, mount } from 'enzyme';
 import sinon from 'sinon';
 
 import { ParentSize } from '@vx/responsive';
-import { supersetTheme, ThemeProvider } from '@superset-ui/style';
 import { Sticky, StickyContainer } from 'react-sticky';
 import { TabContainer, TabContent, TabPane } from 'react-bootstrap';
 
@@ -78,10 +77,6 @@ describe('DashboardBuilder', () => {
           <Provider store={store}>
             <WithDragDropContext>{builder}</WithDragDropContext>
           </Provider>,
-          {
-            wrappingComponent: ThemeProvider,
-            wrappingComponentProps: { theme: supersetTheme },
-          },
         )
       : shallow(builder);
   }

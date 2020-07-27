@@ -45,13 +45,6 @@ describe('Visualization > Line', () => {
     cy.get('.alert-warning').should('not.exist');
   });
 
-  it('should allow negative values in Y bounds', () => {
-    cy.get('#controlSections-tab-display').click();
-    cy.get('span').contains('Y Axis Bounds').scrollIntoView();
-    cy.get('input[placeholder="Min"]').type('-0.1', { delay: 100 });
-    cy.get('.alert-warning').should('not.exist');
-  });
-
   it('should work with adhoc metric', () => {
     const formData = { ...LINE_CHART_DEFAULTS, metrics: [NUM_METRIC] };
     cy.visitChartByParams(JSON.stringify(formData));
@@ -61,7 +54,9 @@ describe('Visualization > Line', () => {
   it('should work with groupby', () => {
     const metrics = ['count'];
     const groupby = ['gender'];
+
     const formData = { ...LINE_CHART_DEFAULTS, metrics, groupby };
+
     cy.visitChartByParams(JSON.stringify(formData));
     cy.verifySliceSuccess({ waitAlias: '@getJson', chartSelector: 'svg' });
   });
@@ -69,11 +64,13 @@ describe('Visualization > Line', () => {
   it('should work with simple filter', () => {
     const metrics = ['count'];
     const filters = [SIMPLE_FILTER];
+
     const formData = {
       ...LINE_CHART_DEFAULTS,
       metrics,
       adhoc_filters: filters,
     };
+
     cy.visitChartByParams(JSON.stringify(formData));
     cy.verifySliceSuccess({ waitAlias: '@getJson', chartSelector: 'svg' });
   });
@@ -86,6 +83,7 @@ describe('Visualization > Line', () => {
       groupby: ['name'],
       timeseries_limit_metric: NUM_METRIC,
     };
+
     cy.visitChartByParams(JSON.stringify(formData));
     cy.verifySliceSuccess({ waitAlias: '@getJson', chartSelector: 'svg' });
   });
@@ -99,24 +97,28 @@ describe('Visualization > Line', () => {
       timeseries_limit_metric: NUM_METRIC,
       order_desc: true,
     };
+
     cy.visitChartByParams(JSON.stringify(formData));
     cy.verifySliceSuccess({ waitAlias: '@getJson', chartSelector: 'svg' });
   });
 
   it('should work with rolling avg', () => {
     const metrics = [NUM_METRIC];
+
     const formData = {
       ...LINE_CHART_DEFAULTS,
       metrics,
       rolling_type: 'mean',
       rolling_periods: 10,
     };
+
     cy.visitChartByParams(JSON.stringify(formData));
     cy.verifySliceSuccess({ waitAlias: '@getJson', chartSelector: 'svg' });
   });
 
   it('should work with time shift 1 year', () => {
     const metrics = [NUM_METRIC];
+
     const formData = {
       ...LINE_CHART_DEFAULTS,
       metrics,
@@ -160,24 +162,28 @@ describe('Visualization > Line', () => {
 
   it('should work with time shift yoy', () => {
     const metrics = [NUM_METRIC];
+
     const formData = {
       ...LINE_CHART_DEFAULTS,
       metrics,
       time_compare: ['1+year'],
       comparison_type: 'ratio',
     };
+
     cy.visitChartByParams(JSON.stringify(formData));
     cy.verifySliceSuccess({ waitAlias: '@getJson', chartSelector: 'svg' });
   });
 
   it('should work with time shift percentage change', () => {
     const metrics = [NUM_METRIC];
+
     const formData = {
       ...LINE_CHART_DEFAULTS,
       metrics,
       time_compare: ['1+year'],
       comparison_type: 'percentage',
     };
+
     cy.visitChartByParams(JSON.stringify(formData));
     cy.verifySliceSuccess({ waitAlias: '@getJson', chartSelector: 'svg' });
   });
@@ -187,6 +193,7 @@ describe('Visualization > Line', () => {
       ...LINE_CHART_DEFAULTS,
       metrics: ['count'],
     };
+
     cy.visitChartByParams(JSON.stringify(formData));
     cy.verifySliceSuccess({ waitAlias: '@getJson', chartSelector: 'svg' });
     cy.get('text.nv-legend-text').contains('COUNT(*)');
@@ -217,6 +224,7 @@ describe('Visualization > Line', () => {
         },
       ],
     };
+
     cy.visitChartByParams(JSON.stringify(formData));
     cy.verifySliceSuccess({ waitAlias: '@getJson', chartSelector: 'svg' });
     cy.get('.slice_container').within(() => {
@@ -255,6 +263,7 @@ describe('Visualization > Line', () => {
         cy.visitChartByParams(JSON.stringify(formData));
       },
     );
+
     cy.verifySliceSuccess({ waitAlias: '@getJson', chartSelector: 'svg' });
     cy.get('.slice_container').within(() => {
       cy.get('.nv-event-annotation-layer-0')
