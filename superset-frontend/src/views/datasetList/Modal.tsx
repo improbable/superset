@@ -20,15 +20,13 @@ import React from 'react';
 import styled from '@superset-ui/style';
 import { Modal as BaseModal } from 'react-bootstrap';
 import { t } from '@superset-ui/translation';
-import Button from '../views/datasetList/Button';
+import Button from './Button';
 
 interface ModalProps {
   children: React.ReactNode;
-  disablePrimaryButton?: boolean;
+  disableSave: boolean;
   onHide: () => void;
-  onHandledPrimaryAction: () => void;
-  primaryButtonName: string;
-  primaryButtonType?: 'primary' | 'danger';
+  onSave: () => void;
   show: boolean;
   title: React.ReactNode;
   bsSize?: 'xs' | 'xsmall' | 'sm' | 'small' | 'medium' | 'lg' | 'large';
@@ -48,7 +46,8 @@ const StyledModal = styled(BaseModal)`
   }
 
   .modal-body {
-    padding: 18px;
+    padding: 18px 0 340px 18px;
+    width: 65%;
   }
 
   .modal-footer {
@@ -68,11 +67,9 @@ const Title = styled.div`
 
 export default function Modal({
   children,
-  disablePrimaryButton = false,
-  onHandledPrimaryAction,
+  disableSave,
   onHide,
-  primaryButtonName,
-  primaryButtonType = 'primary',
+  onSave,
   show,
   title,
   bsSize = 'lg',
@@ -88,12 +85,8 @@ export default function Modal({
       <BaseModal.Footer>
         <span className="float-right">
           <Button onClick={onHide}>{t('Cancel')}</Button>
-          <Button
-            bsStyle={primaryButtonType}
-            disabled={disablePrimaryButton}
-            onClick={onHandledPrimaryAction}
-          >
-            {primaryButtonName}
+          <Button bsStyle="primary" disabled={disableSave} onClick={onSave}>
+            {t('Add')}
           </Button>
         </span>
       </BaseModal.Footer>

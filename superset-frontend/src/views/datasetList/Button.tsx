@@ -25,7 +25,7 @@ interface ModalProps {
   disabled?: boolean;
   onClick: () => void;
   padding?: number;
-  bsStyle?: 'default' | 'primary' | 'danger';
+  bsStyle?: 'default' | 'primary';
   width?: number;
 }
 
@@ -49,11 +49,6 @@ const StyledButton = styled(BaseButton)`
   &.btn-primary,
   &.btn-primary:hover {
     background-color: ${({ theme }) => theme.colors.primary.base};
-    color: ${({ theme }) => theme.colors.grayscale.light5};
-  }
-  &.btn-danger,
-  &.btn-danger:hover {
-    background-color: ${({ theme }) => theme.colors.error.base};
     color: ${({ theme }) => theme.colors.grayscale.light5};
   }
 `;

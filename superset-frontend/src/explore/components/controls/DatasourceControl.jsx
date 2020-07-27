@@ -38,11 +38,9 @@ import TooltipWrapper from '../../../components/TooltipWrapper';
 import './DatasourceControl.less';
 
 const propTypes = {
-  actions: PropTypes.object.isRequired,
   onChange: PropTypes.func,
   value: PropTypes.string,
   datasource: PropTypes.object.isRequired,
-  isEditable: PropTypes.bool,
   onDatasourceSave: PropTypes.func,
 };
 
@@ -50,7 +48,6 @@ const defaultProps = {
   onChange: () => {},
   onDatasourceSave: null,
   value: null,
-  isEditable: true,
 };
 
 class DatasourceControl extends React.PureComponent {
@@ -61,20 +58,12 @@ class DatasourceControl extends React.PureComponent {
       showChangeDatasourceModal: false,
       menuExpanded: false,
     };
-    this.onDatasourceSave = this.onDatasourceSave.bind(this);
     this.toggleChangeDatasourceModal = this.toggleChangeDatasourceModal.bind(
       this,
     );
     this.toggleEditDatasourceModal = this.toggleEditDatasourceModal.bind(this);
     this.toggleShowDatasource = this.toggleShowDatasource.bind(this);
     this.renderDatasource = this.renderDatasource.bind(this);
-  }
-
-  onDatasourceSave(datasource) {
-    this.props.actions.setDatasource(datasource);
-    if (this.props.onDatasourceSave) {
-      this.props.onDatasourceSave(datasource);
-    }
   }
 
   toggleShowDatasource() {
@@ -131,7 +120,7 @@ class DatasourceControl extends React.PureComponent {
 
   render() {
     const { showChangeDatasourceModal, showEditDatasourceModal } = this.state;
-    const { datasource, onChange, value } = this.props;
+    const { datasource, onChange, onDatasourceSave, value } = this.props;
     return (
       <div>
         <ControlHeader {...this.props} />
@@ -139,7 +128,6 @@ class DatasourceControl extends React.PureComponent {
           <TooltipWrapper
             label="change-datasource"
             tooltip={t('Click to change the datasource')}
-            trigger={['hover']}
           >
             <DropdownButton
               title={datasource.name}
@@ -160,7 +148,7 @@ class DatasourceControl extends React.PureComponent {
                   {t('Explore in SQL Lab')}
                 </MenuItem>
               )}
-              {this.props.isEditable && (
+              {!!this.props.onDatasourceSave && (
                 <MenuItem eventKey="3" onClick={this.toggleEditDatasourceModal}>
                   {t('Edit Datasource')}
                 </MenuItem>
@@ -193,11 +181,11 @@ class DatasourceControl extends React.PureComponent {
         <DatasourceModal
           datasource={datasource}
           show={showEditDatasourceModal}
-          onDatasourceSave={this.onDatasourceSave}
+          onDatasourceSave={onDatasourceSave}
           onHide={this.toggleEditDatasourceModal}
         />
         <ChangeDatasourceModal
-          onDatasourceSave={this.onDatasourceSave}
+          onDatasourceSave={onDatasourceSave}
           onHide={this.toggleChangeDatasourceModal}
           show={showChangeDatasourceModal}
           onChange={onChange}

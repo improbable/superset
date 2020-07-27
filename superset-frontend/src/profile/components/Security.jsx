@@ -17,15 +17,14 @@
  * under the License.
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Badge, Label } from 'react-bootstrap';
 import { t } from '@superset-ui/translation';
-import { UserWithPermissionsAndRoles } from '../../types/bootstrapTypes';
 
-interface SecurityProps {
-  user: UserWithPermissionsAndRoles;
-}
-
-export default function Security({ user }: SecurityProps) {
+const propTypes = {
+  user: PropTypes.object.isRequired,
+};
+export default function Security({ user }) {
   return (
     <div>
       <div className="roles">
@@ -67,3 +66,4 @@ export default function Security({ user }: SecurityProps) {
     </div>
   );
 }
+Security.propTypes = propTypes;
