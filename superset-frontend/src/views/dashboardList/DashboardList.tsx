@@ -18,7 +18,6 @@
  */
 import { SupersetClient } from '@superset-ui/connection';
 import { t } from '@superset-ui/translation';
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
 import rison from 'rison';
@@ -60,7 +59,7 @@ interface State {
 interface Dashboard {
   changed_by_name: string;
   changed_by_url: string;
-  changed_on: string;
+  changed_on_delta_humanized: string;
   dashboard_title: string;
   id: number;
   published: boolean;
@@ -125,7 +124,7 @@ class DashboardList extends React.PureComponent<Props, State> {
     return isFeatureEnabled(FeatureFlag.LIST_VIEWS_SIP34_FILTER_UI);
   }
 
-  initialSort = [{ id: 'changed_on', desc: true }];
+  initialSort = [{ id: 'changed_on_delta_humanized', desc: true }];
 
   columns = [
     {
@@ -183,11 +182,11 @@ class DashboardList extends React.PureComponent<Props, State> {
     {
       Cell: ({
         row: {
-          original: { changed_on: changedOn },
+          original: { changed_on_delta_humanized: changedOn },
         },
-      }: any) => <span className="no-wrap">{moment(changedOn).fromNow()}</span>,
+      }: any) => <span className="no-wrap">{changedOn}</span>,
       Header: t('Modified'),
-      accessor: 'changed_on',
+      accessor: 'changed_on_delta_humanized',
     },
     {
       accessor: 'slug',
